@@ -12,7 +12,7 @@ void			*start_timer(void *null)
 
 void			launch_timer(void)
 {
-	thread_t	timer;
+	pthread_t	timer;
 
 	pthread_create(&timer, 0, start_timer, 0);
 	pthread_detach(timer);
