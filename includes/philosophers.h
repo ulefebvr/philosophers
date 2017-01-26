@@ -44,12 +44,20 @@ typedef enum			e_state
 	THINK, REST, EAT
 }						t_state;
 
+typedef struct			s_stick
+{
+	char				stick;
+	pthread_mutex_t		lock;
+	struct s_stick		*next;
+	struct s_stick		*prev;
+}						t_stick;
+
 typedef struct			s_philo
 {
 	unsigned int		life;
-	char				stick;
+	t_stick				*lstick;
+	t_stick				*rstick;
 	t_state				state;
-	pthread_mutex_t		lock;
 	pthread_t			thread;
 	struct s_philo		*next;
 	struct s_philo		*prev;
