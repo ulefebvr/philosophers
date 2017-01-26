@@ -50,6 +50,7 @@ typedef struct			s_philo
 	char				stick;
 	t_state				state;
 	pthread_mutex_t		lock;
+	pthread_t			thread;
 	struct s_philo		*next;
 	struct s_philo		*prev;
 }						t_philo;
@@ -58,5 +59,8 @@ char					g_dead = 0;
 
 t_philo					*initiate_philos(int number, t_philo *prev);
 void					free_philosophers(t_philo *philos);
+
+void					launch_threads(t_philo *philos, int count);
+void					wait_threads(t_philo *philos, int count);
 
 #endif
