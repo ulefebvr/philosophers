@@ -15,7 +15,7 @@ void	wait_threads(t_philo *philos, int count)
 {
 	while (count)
 	{
-		pthread_join(&philos->thread, 0);
+		pthread_join(philos->thread, 0);
 		philos = philos->next;
 		count--;
 	}

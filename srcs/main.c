@@ -1,5 +1,7 @@
 #include "philosophers.h"
 
+char			g_dead = 0;
+
 int				main(void)
 {
 	t_philo		*philos;
@@ -8,4 +10,5 @@ int				main(void)
 	launch_threads(philos, NUMBER_PHILOS);
 	wait_threads(philos, NUMBER_PHILOS);
 	free_philosophers(philos);
+	return (0);
 }

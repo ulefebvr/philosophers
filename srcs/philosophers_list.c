@@ -1,8 +1,11 @@
+#include "libft.h"
 #include "philosophers.h"
+
+#include <stdlib.h>
 
 static t_philo	*make_it_circular(t_philo *philos)
 {
-	t_philos	*tmp;
+	t_philo		*tmp;
 
 	tmp = philos;
 	while (tmp && tmp->next)
@@ -25,7 +28,7 @@ static t_philo	*create_list(int number, t_philo *prev)
 	{
 		philo->life = MAX_LIFE;
 		philo->stick = 1;
-		philo->s = THINK;
+		philo->state = THINK;
 		pthread_mutex_init(&philo->lock, 0);
 		philo->prev = prev;
 		if (!(philo->next = initiate_philos(--number, philo)) && number != 0)

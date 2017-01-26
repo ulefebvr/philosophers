@@ -55,7 +55,7 @@ typedef struct			s_philo
 	struct s_philo		*prev;
 }						t_philo;
 
-char					g_dead = 0;
+extern char				g_dead;
 
 t_philo					*initiate_philos(int number, t_philo *prev);
 void					free_philosophers(t_philo *philos);

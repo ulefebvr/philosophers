@@ -14,7 +14,7 @@ TARGET_EXEC ?= philo
 
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./srcs
-INC_DIR ?= ./includes
+INC_DIR ?= ./includes ./libft/includes
 
 SRCS := $(shell find $(SRC_DIRS) -name '*.cpp' -or -name '*.c' -or -name '*.s')
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
@@ -37,7 +37,7 @@ all: $(TARGET_EXEC) $(OBJS)
 
 $(TARGET_EXEC): $(OBJS)
 	make -C libft
-	$(CC) -o $@ $(OBJS)
+	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
 # assembly
 $(BUILD_DIR)/%.s.o: %.s
