@@ -4,6 +4,11 @@
 # include <pthread.h>
 
 /*
+** Le nombre de philosophes participant au challenge.
+*/
+#define NUMBER_PHILOS			7
+
+/*
 ** Le nombre de points de vie maximum des philosophes.
 */
 # define MAX_LIFE				30

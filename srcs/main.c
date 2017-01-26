@@ -4,6 +4,6 @@ int				main(void)
 {
 	t_philo		*philos;
 
-	philos = initiate_philos(0);
+	philos = initiate_philos(NUMBER_PHILOS, 0);
 	free_philosophers(philos);
 }
