@@ -37,7 +37,7 @@
 /*
 ** Convertion seconds to useconds.
 */
-# define SECONDS(x)				(x * 1000)
+# define SECONDS(x)				(x * 1000 * 1000)
 
 typedef enum			e_state
 {
