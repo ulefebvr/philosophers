@@ -56,10 +56,12 @@ typedef struct			s_philo
 }						t_philo;
 
 extern char				g_dead;
+extern char				g_timeout;
 
 t_philo					*initiate_philos(int number, t_philo *prev);
 void					free_philosophers(t_philo *philos);
 
+void					launch_timer(void);
 void					launch_threads(t_philo *philos, int count);
 void					wait_threads(t_philo *philos, int count);
 
