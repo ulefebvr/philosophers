@@ -70,6 +70,9 @@ re: fclean
 norme:
 	norminette $(SRC_DIRS) $(INC_DIR)
 
+test:	re
+	make -C test
+
 -include $(DEPS)
 
 MKDIR_P ?= mkdir -p
