@@ -41,11 +41,14 @@ typedef enum			e_state
 
 typedef struct			s_philo
 {
-	char				baguette;
-	t_state				s;
+	unsigned int		life;
+	char				stick;
+	t_state				state;
 	pthread_mutex_t		lock;
 	struct s_philo		*next;
 	struct s_philo		*prev;
 }						t_philo;
+
+char					g_dead = 0;
 
 #endif
