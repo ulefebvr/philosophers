@@ -27,7 +27,7 @@ CPPFLAGS ?= $(INC_FLAGS) -MMD -MP -Wall -Werror -Wextra
 
 # Extra flags to give to compilers when they are supposed to invoke the linker, ‘ld’, such as -L.
 # Libraries (-lfoo) should be added to the LDLIBS variable instead.
-LDFLAGS ?= -L ./libft -lft
+LDFLAGS ?= -L ./libft -lft -lpthread
 
 all: $(TARGET_EXEC) $(OBJS)
 
