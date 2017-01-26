@@ -1,5 +1,7 @@
 #include "philosophers.h"
 
+#include <unistd.h>
+
 void			*start_timer(void *null)
 {
 	(void)null;
