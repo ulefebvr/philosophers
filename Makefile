@@ -36,6 +36,7 @@ all: $(TARGET_EXEC) $(OBJS)
 # 	ranlib $(TARGET_EXEC)
 
 $(TARGET_EXEC): $(OBJS)
+	make -C libft
 	$(CC) -o $@ $(OBJS)
 
 # assembly
@@ -56,9 +57,11 @@ $(BUILD_DIR)/%.cpp.o: %.cpp
 .PHONY: clean fclean re norme
 
 clean:
+	make clean -C libft
 	$(RM) -r $(BUILD_DIR)
 
 fclean: clean
+	make fclean -C libft
 	$(RM) $(TARGET_EXEC)
 
 re: fclean
