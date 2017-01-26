@@ -1,6 +1,8 @@
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
+# include <pthread.h>
+
 /*
 ** Le nombre de points de vie maximum des philosophes.
 */
@@ -26,5 +28,24 @@
 ** en affichant “Now, it is time... To DAAAAAAAANCE ! ! !”
 */
 # define TIMEOUT				60
+
+/*
+** Convertion seconds to useconds.
+*/
+# define SECONDS(x)				(x * 1000)
+
+typedef enum			e_state
+{
+	THINK, REST, EAT
+}						t_state;
+
+typedef struct			s_philo
+{
+	char				baguette;
+	t_state				s;
+	pthread_mutex_t		lock;
+	struct s_philo		*next;
+	struct s_philo		*prev;
+}						t_philo;
 
 #endif
