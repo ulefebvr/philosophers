@@ -47,6 +47,7 @@ static void		free_philos(t_philo *philos)
 	if (philos != 0)
 	{
 		free_philos(philos->next);
+		pthread_mutex_destroy(&philos->lock);
 		free(philos);
 	}
 }
