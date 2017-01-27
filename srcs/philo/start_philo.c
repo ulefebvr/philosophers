@@ -6,7 +6,7 @@
 /*   By: zipo <zipo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:55:21 by zipo              #+#    #+#             */
-/*   Updated: 2017/01/27 01:26:43 by zipo             ###   ########.fr       */
+/*   Updated: 2017/01/27 01:31:04 by zipo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,6 @@
 
 int g_i = 0; // ***************** DEBUG ***************
 
-/*
-*	Dans le cas ou un philosophe sort de l'etat repos et que ses deux voisins
-*	mangent, il se retrouve a devoir faire la seule action disponible pour lui : se reposer.
-*	Pour le temps de reflexion, c'est un temps qu'il doit effectuer entièrement
-*	a part si un autre philosophe a besoin de sa baguette
-*/
-
-
-/*
-*	Un philosophe ne peut se saisir d’une baguette que si elle se trouve
-*	adjacente à lui	(droite ou gauche).
-*	Deux philosophes ne peuvent pas utiliser la même baguette au même moment.
-*/
 void	unlock_stick(t_stick *left, t_stick *right)
 {
 	if (left)
@@ -51,13 +38,11 @@ int		check_stick(t_philo *philo)
 	{
 		philo->lstick->stick = 0;
 		++stick;
-		// pthread_mutex_unlock(&philo->lstick->lock);
 	}
 	if (philo->rstick->stick && !pthread_mutex_trylock(&philo->rstick->lock))
 	{
 		philo->rstick->stick = 0;
 		++stick;
-		// pthread_mutex_unlock(&philo->rstick->lock);
 	}
 	return(stick);
 }
