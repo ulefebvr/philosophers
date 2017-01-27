@@ -31,22 +31,24 @@ int		check_stick(t_philo *philo)
 	return(stick);
 }
 
-void	*start_philo(void *philo)
+void	*start_philo(void *philosopher)
 {
-	t_philo	*p;
 	int		stick;
-	int		process = g_i++;
+	t_philo	*philo;
 
-	p = (t_philo *)philo;
-	while (everything_safe(philo))
+	philo = (t_philo *)philosopher;
+	while (!g_dead && !g_timeout && philo->life > 0)
 	{
-		if ((stick = check_stick(p)) == BOTH)
-			philo_eat(p);
+		printf("THREAD %d\n", philo->number);
+		stick = check_stick(philo);
+		if (stick == BOTH)
+			philo_eat(philo);
 		else if (stick == LEFT || stick == RIGHT)
-			philo_think(p, stick);
+			philo_think(philo, stick);
 		else
-			philo_rest(p);
+			philo_rest(philo);
 	}
-	g_dead = philo->life <= 0;
+	if (!g_dead)
+		g_dead = philo->life <= 0;
 	return (0);
 }

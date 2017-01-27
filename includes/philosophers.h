@@ -54,6 +54,7 @@ typedef struct			s_stick
 
 typedef struct			s_philo
 {
+	int					number;
 	int					life;
 	t_stick				*lstick;
 	t_stick				*rstick;

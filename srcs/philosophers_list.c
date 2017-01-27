@@ -63,7 +63,7 @@ static t_philo	*create_list(int number, t_philo *prev, t_stick *sticks)
 		return (0);
 	if ((philo = (t_philo *)ft_memalloc(sizeof(t_philo))))
 	{
-		--number;
+		philo->number = --number;
 		philo->life = MAX_LIFE;
 		philo->lstick = sticks;
 		philo->rstick = sticks->next;
