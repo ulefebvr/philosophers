@@ -1,6 +1,7 @@
-#include "philosophers.h"
+#include "philo.h"
+#include <unistd.h>
 
-void		philo_think(t_philo *philo)
+void		philo_rest(t_philo *philo)
 {
 	int		time;
 
