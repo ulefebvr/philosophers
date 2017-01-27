@@ -25,4 +25,5 @@ void		philo_eat(t_philo *philo)
 		}
 	}
 	unlock_sticks(philo);
+	philo_rest(philo);
 }

@@ -13,8 +13,6 @@
 #include "philo.h"
 #include <unistd.h>
 
-int g_i = 0; // ***************** DEBUG ***************
-
 int		check_stick(t_philo *philo)
 {
 	int	stick;
@@ -33,7 +31,6 @@ int		check_stick(t_philo *philo)
 	return(stick);
 }
 
-#include <stdio.h> // ***************** DEBUG ***************
 void	*start_philo(void *philo)
 {
 	t_philo	*p;
@@ -41,24 +38,15 @@ void	*start_philo(void *philo)
 	int		process = g_i++;
 
 	p = (t_philo *)philo;
-	while ((p->life > 0) && !g_dead && !g_timeout)
+	while (everything_safe(philo))
 	{
-		printf("P: %d, life: %d, state: %d\n", process, p->life, p->state); // ***************** DEBUG ***************
 		if ((stick = check_stick(p)) == BOTH)
 			philo_eat(p);
 		else if (stick == LEFT || stick == RIGHT)
-		{
 			philo_think(p, stick);
-			continue ;
-		}
-		philo_rest(p);
+		else
+			philo_rest(p);
 	}
-	if (p->life <= 0)
-	{
-		printf("Thread %d is DEAD !\n", process); // ***************** DEBUG ***************
-		g_dead = 1;
-	}
-	else
-		printf("TIME OUT BITCHES\n"); // ***************** DEBUG ***************
+	g_dead = philo->life <= 0;
 	return (0);
 }
