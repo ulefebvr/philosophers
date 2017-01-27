@@ -6,7 +6,7 @@
 /*   By: zipo <zipo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:55:21 by zipo              #+#    #+#             */
-/*   Updated: 2017/01/27 01:31:04 by zipo             ###   ########.fr       */
+/*   Updated: 2017/01/27 12:54:03 by zipo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ void	*start_philo(void *philo)
 		if ((stick = check_stick(p)) == 2)
 			philo_eat(p);
 		else if (stick == 1)
+		{
 			philo_think(p);
+			continue ;
+		}
 		philo_rest(p);
 		p->life -= 4; // ***************** DEBUG ***************
 	}
