@@ -16,7 +16,7 @@
 /*
 ** Le nombre de SECONDES que met un philosophe à manger.
 */
-# define EAT_T					3
+# define EAT_T					2
 
 /*
 ** Le nombre de SECONDES pendant lesquels un philosophe se repose.
@@ -54,7 +54,7 @@ typedef struct			s_stick
 
 typedef struct			s_philo
 {
-	unsigned int		life;
+	int					life;
 	t_stick				*lstick;
 	t_stick				*rstick;
 	t_state				state;
@@ -66,11 +66,13 @@ typedef struct			s_philo
 extern char				g_dead;
 extern char				g_timeout;
 
-t_philo					*initiate_philos(int number, t_philo *prev);
+t_philo					*initiate_philos(int number);
 void					free_philosophers(t_philo *philos);
 
 void					launch_timer(void);
 void					launch_threads(t_philo *philos, int count);
 void					wait_threads(t_philo *philos, int count);
+
+void					*start_philo(void *philo);
 
 #endif
