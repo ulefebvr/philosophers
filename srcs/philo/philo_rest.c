@@ -1,4 +1,5 @@
 #include "philo.h"
+#include "graphics.h"
 #include <unistd.h>
 
 static void	wait(t_philo *philo)
@@ -22,4 +23,5 @@ void		philo_rest(t_philo *philo)
 		if (++time == REST_T)
 			break ;
 	}
+	graphic_put_state(philo);
 }

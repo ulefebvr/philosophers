@@ -1,4 +1,5 @@
 #include "philo.h"
+#include "graphics.h"
 #include <unistd.h>
 
 static t_stick	*get_stick(t_philo *philo, int side)
@@ -26,4 +27,5 @@ void			philo_think(t_philo *philo, int side)
 		if (++time == THINK_T)
 			break ;
 	}
+	graphic_put_state(philo);
 }

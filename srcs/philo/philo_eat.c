@@ -1,4 +1,5 @@
 #include "philo.h"
+#include "graphics.h"
 #include <unistd.h>
 
 static void	unlock_sticks(t_philo *philo)
@@ -24,6 +25,7 @@ void		philo_eat(t_philo *philo)
 			break ;
 		}
 	}
+	graphic_put_state(philo);
 	unlock_sticks(philo);
 	philo_rest(philo);
 }

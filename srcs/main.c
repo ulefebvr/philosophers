@@ -16,6 +16,7 @@ int				main(void)
 		launch_threads(philos, NUMBER_PHILOS);
 		wait_threads(philos, NUMBER_PHILOS);
 		free_philosophers(philos);
+		graphic_destroy_windows();
 	}
 	return (0);
 }

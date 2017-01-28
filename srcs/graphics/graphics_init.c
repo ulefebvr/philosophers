@@ -4,6 +4,8 @@ int				graphic_init(void)
 {
 	SDL_Surface* sprite;
 
+	if (!(g_graphic.mutex = SDL_CreateMutex()))
+		return (0);
 	if (!(g_graphic.window = graphic_create_windows()))
 		return (0);
 	if (!(g_graphic.renderer = SDL_CreateRenderer(g_graphic.window, -1,

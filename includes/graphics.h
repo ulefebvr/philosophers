@@ -15,7 +15,10 @@ typedef struct		s_graphic
 extern t_graphic	g_graphic;
 
 SDL_Window			*graphic_create_windows(void);
+void				graphic_destroy_windows(void);
+
 int					graphic_init(void);
+
 int					graphic_put_state(t_philo *philo);
 
 #endif
