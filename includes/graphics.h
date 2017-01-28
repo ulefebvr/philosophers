@@ -3,6 +3,15 @@
 
 # include "SDL.h"
 
-SDL_Window			*graphic_create_windows(void);
+typedef struct		s_graphic
+{
+	SDL_Renderer	*renderer;
+	SDL_Texture		*texture;
+	SDL_Window		*window;
+}					t_graphic;
 
+extern t_graphic	g_graphic;
+
+SDL_Window			*graphic_create_windows(void);
+int					graphic_init(void);
 #endif

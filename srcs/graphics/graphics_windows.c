@@ -10,7 +10,7 @@ SDL_Window			*graphic_create_windows(void)
 	pWindow = SDL_CreateWindow(
 		"Philosophers",
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		640, 480, SDL_WINDOW_SHOWN
+		1296, 277, SDL_WINDOW_SHOWN
 	);
 	if (pWindow == 0)
 		return (0);
