@@ -39,7 +39,6 @@ void	*start_philo(void *philosopher)
 	philo = (t_philo *)philosopher;
 	while (!g_dead && !g_timeout && philo->life > 0)
 	{
-		printf("THREAD %d\n", philo->number);
 		stick = check_stick(philo);
 		if (stick == BOTH)
 			philo_eat(philo);
