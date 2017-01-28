@@ -9,11 +9,13 @@ int				main(void)
 {
 	t_philo		*philos;
 
-	graphic_init();
-	philos = initiate_philos(NUMBER_PHILOS);
-	launch_timer();
-	launch_threads(philos, NUMBER_PHILOS);
-	wait_threads(philos, NUMBER_PHILOS);
-	free_philosophers(philos);
+	if (graphic_init())
+	{
+		philos = initiate_philos(NUMBER_PHILOS);
+		launch_timer();
+		launch_threads(philos, NUMBER_PHILOS);
+		wait_threads(philos, NUMBER_PHILOS);
+		free_philosophers(philos);
+	}
 	return (0);
 }
