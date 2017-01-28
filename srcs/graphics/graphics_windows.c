@@ -1,4 +1,5 @@
 #include "SDL.h"
+#include "graphics.h"
 
 SDL_Window			*graphic_create_windows(void)
 {
@@ -15,4 +16,19 @@ SDL_Window			*graphic_create_windows(void)
 	if (pWindow == 0)
 		return (0);
 	return (pWindow);
+}
+
+void				graphic_destroy_windows(void)
+{
+	SDL_Event		event;
+
+	SDL_DestroyRenderer(g_graphic.renderer);
+	SDL_DestroyTexture(g_graphic.texture);
+	while (SDL_WaitEvent(&event))
+	{
+		if (event.type == SDL_KEYDOWN)
+			break ;
+	}
+	SDL_DestroyWindow(g_graphic.window);
+	SDL_Quit();
 }
