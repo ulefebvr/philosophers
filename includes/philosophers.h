@@ -41,7 +41,7 @@
 
 typedef enum			e_state
 {
-	THINK, REST, EAT
+	THINK, REST, EAT, DEAD
 }						t_state;
 
 typedef struct			s_stick

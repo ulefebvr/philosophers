@@ -9,10 +9,10 @@ static int	get_x_state(t_state state)
 		return (1299);
 	else if (state == REST)
 		return (433);
-	else
-		return (0);
+	return (0);
 }
 
+#include <unistd.h>
 int			graphic_put_state(t_philo *philo)
 {
 	SDL_Rect src;
@@ -22,7 +22,7 @@ int			graphic_put_state(t_philo *philo)
 	src.y = 0;
 	src.w = 433;
 	src.h = 650;
-	dst.x = (philo->number - 1) * 185;
+	dst.x = philo->number * 185;
 	dst.y = 0;
 	dst.w = 185;
 	dst.h = 278;
