@@ -22,6 +22,7 @@ void				graphic_destroy_windows(void)
 {
 	SDL_Event		event;
 
+	SDL_DestroyMutex(g_graphic.mutex);
 	SDL_DestroyRenderer(g_graphic.renderer);
 	SDL_DestroyTexture(g_graphic.texture);
 	while (SDL_WaitEvent(&event))
