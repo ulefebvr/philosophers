@@ -6,7 +6,7 @@
 /*   By: zipo <zipo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:55:21 by zipo              #+#    #+#             */
-/*   Updated: 2017/01/29 02:09:10 by zipo             ###   ########.fr       */
+/*   Updated: 2017/01/29 02:16:51 by zipo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		check_stick(t_philo *philo)
 	return(stick);
 }
 
-#include <stdio.h>
 void	*start_philo(void *philosopher)
 {
 	int		stick;
