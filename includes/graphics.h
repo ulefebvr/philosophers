@@ -27,7 +27,7 @@ extern t_graphic	g_graphic;
 
 void				graphic_destroy_windows(void);
 
-t_philo				*graphic_init_philo(t_philo *philo);
+int					graphic_init_philo(t_philo *philo);
 int					graphic_init(void);
 
 void				graphic_loop(t_philo *philo);
