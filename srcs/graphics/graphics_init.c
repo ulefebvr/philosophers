@@ -21,7 +21,7 @@ t_philo			*graphic_init_philo(t_philo *philo)
 	while (count-- > 0)
 	{
 		i = -1;
-		while (++i <= 4)
+		while (++i < 4)
 		{
 			philo->sprites[i] = sfSprite_create();
 			sfSprite_setTexture(
