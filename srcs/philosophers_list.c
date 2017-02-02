@@ -55,11 +55,12 @@ static t_stick	*create_sticks_list(int number, t_stick *prev)
 	{
 		--number;
 		stick->stick = 1;
-		pthread_mutex_init(&stick->lock, 0);
 		stick->prev = prev;
-		if (!(stick->next = create_sticks_list(number, stick))
-			&& number != 0)
+		if (pthread_mutex_init(&stick->lock, 0)
+			|| (!(stick->next = create_sticks_list(number, stick))
+			&& number != 0))
 		{
+			pthread_mutex_destroy(&stick->lock);
 			free(stick);
 			return (0);
 		}
@@ -95,7 +96,16 @@ static t_philo	*create_list(int number, t_philo *prev, t_stick *sticks)
 t_philo			*initiate_philos(int number)
 {
 	t_stick	*sticks;
+	t_philo *philos;
 
 	sticks = make_it_circular_stick(create_sticks_list(number, 0));
-	return (make_it_circular(create_list(number, 0, sticks)));
+	if (sticks == 0)
+	{
+		ft_fdprint(2, ERR_STICKS_INIT);
+		return (0);
+	}
+	philos = make_it_circular(create_list(number, 0, sticks));
+	if (philos == 0)
+		ft_fdprint(2, ERR_PHILOS_INIT);
+	return (philos);
 }
