@@ -75,7 +75,10 @@ void			graphic_loop(t_philo *philo)
 	}
 	if (!exit_now)
 	{
-		graphic_show_philos(philo);
+		if (g_dead)
+			graphic_show_philos(philo);
+		else if (g_timeout)
+			time_to_dance();
 		wait_for_exit();
 	}
 }
