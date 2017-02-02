@@ -14,7 +14,7 @@ TARGET_EXEC ?= philo
 
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./srcs
-INC_DIR ?= ./includes ./lib/libft/includes ./lib/SDL2-2.0.5/include
+INC_DIR ?= ./includes ./lib/libft/includes $(HOME)/.brew/include
 
 SRCS := $(shell find $(SRC_DIRS) -name '*.cpp' -or -name '*.c' -or -name '*.s')
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
@@ -27,8 +27,7 @@ CPPFLAGS ?= $(INC_FLAGS) -MMD -MP -Wall -Werror -Wextra
 
 # Extra flags to give to compilers when they are supposed to invoke the linker, ‘ld’, such as -L.
 # Libraries (-lfoo) should be added to the LDLIBS variable instead.
-LDFLAGS ?= -L ./lib/libft -lft -lpthread -L ./lib/SDL2-2.0.5/build/build/.libs -lSDL2
-
+LDFLAGS ?= -L ./lib/libft -lft -lpthread -L $(HOME)/.brew/lib -lcsfml-audio -lcsfml-graphics -lcsfml-network -lcsfml-window -lcsfml-system -Wl,-rpath,$(HOME)/.brew/lib/
 all: $(TARGET_EXEC) $(OBJS)
 
 # $(TARGET_EXEC): $(OBJS)

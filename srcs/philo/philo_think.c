@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_think.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rclanget <rclanget@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/02 22:24:51 by rclanget          #+#    #+#             */
+/*   Updated: 2017/02/02 22:24:56 by rclanget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
-#include "graphics.h"
 #include <unistd.h>
 
 static t_stick	*get_stick(t_philo *philo, int side)
@@ -27,5 +38,4 @@ void			philo_think(t_philo *philo, int side)
 		if (++time == THINK_T)
 			break ;
 	}
-	graphic_put_state(philo);
 }

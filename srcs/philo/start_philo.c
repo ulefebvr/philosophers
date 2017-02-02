@@ -6,12 +6,11 @@
 /*   By: zipo <zipo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:55:21 by zipo              #+#    #+#             */
-/*   Updated: 2017/01/29 02:16:51 by zipo             ###   ########.fr       */
+/*   Updated: 2017/02/02 22:25:15 by rclanget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include "graphics.h"
 #include <unistd.h>
 
 int		check_stick(t_philo *philo)
@@ -29,7 +28,7 @@ int		check_stick(t_philo *philo)
 		philo->rstick->stick = 0;
 		stick += RIGHT;
 	}
-	return(stick);
+	return (stick);
 }
 
 void	*start_philo(void *philosopher)
@@ -51,7 +50,6 @@ void	*start_philo(void *philosopher)
 	if (!g_dead && philo->life <= 0)
 	{
 		philo->state = DEAD;
-		graphic_put_state(philo);
 		g_dead = 1;
 	}
 	return (0);

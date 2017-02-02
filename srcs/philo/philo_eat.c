@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_eat.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rclanget <rclanget@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/02 22:24:40 by rclanget          #+#    #+#             */
+/*   Updated: 2017/02/02 22:25:07 by rclanget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
-#include "graphics.h"
 #include <unistd.h>
 
 static void	unlock_sticks(t_philo *philo)
@@ -25,7 +36,6 @@ void		philo_eat(t_philo *philo)
 			break ;
 		}
 	}
-	graphic_put_state(philo);
 	unlock_sticks(philo);
 	philo_rest(philo);
 }

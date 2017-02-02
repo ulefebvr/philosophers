@@ -1,24 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphics.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rclanget <rclanget@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/02 22:31:37 by rclanget          #+#    #+#             */
+/*   Updated: 2017/02/02 22:31:38 by rclanget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
-# include "SDL.h"
+# include "SFML/Graphics.h"
 # include "philosophers.h"
 
 typedef struct		s_graphic
 {
-	SDL_Renderer	*renderer;
-	SDL_Texture		*texture;
-	SDL_Window		*window;
-	SDL_mutex		*mutex;
+	pthread_mutex_t	mutex;
+	sfTexture		*texture;
+	sfRenderWindow	*window;
 }					t_graphic;
 
 extern t_graphic	g_graphic;
 
-SDL_Window			*graphic_create_windows(void);
 void				graphic_destroy_windows(void);
 
+t_philo				*graphic_init_philo(t_philo *philo);
 int					graphic_init(void);
 
-int					graphic_put_state(t_philo *philo);
+void				graphic_loop(t_philo *philo);
 
 #endif

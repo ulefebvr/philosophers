@@ -1,17 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rclanget <rclanget@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/02 22:32:46 by rclanget          #+#    #+#             */
+/*   Updated: 2017/02/02 22:32:47 by rclanget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
+# include <unistd.h>
 # include <pthread.h>
+# include "SFML/Graphics.h"
 
 /*
 ** Le nombre de philosophes participant au challenge.
 */
-#define NUMBER_PHILOS			7
+# define NUMBER_PHILOS			7
 
 /*
 ** Le nombre de points de vie maximum des philosophes.
 */
-# define MAX_LIFE				30
+# define MAX_LIFE				10
 
 /*
 ** Le nombre de SECONDES que met un philosophe à manger.
@@ -41,7 +55,7 @@
 
 typedef enum			e_state
 {
-	THINK, REST, EAT, DEAD
+	DEAD, REST, THINK, EAT
 }						t_state;
 
 typedef struct			s_stick
@@ -60,6 +74,7 @@ typedef struct			s_philo
 	t_stick				*rstick;
 	t_state				state;
 	pthread_t			thread;
+	sfSprite			*sprites[4];
 	struct s_philo		*next;
 	struct s_philo		*prev;
 }						t_philo;
