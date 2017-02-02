@@ -80,6 +80,7 @@ static t_philo	*create_list(int number, t_philo *prev, t_stick *sticks)
 		philo->lstick = sticks;
 		philo->rstick = sticks->next;
 		philo->state = THINK;
+		ft_bzero(philo->sprites, sizeof(sfSprite *) * 4);
 		philo->prev = prev;
 		if (!(philo->next = create_list(number, philo, sticks->next))
 			&& number != 0)
