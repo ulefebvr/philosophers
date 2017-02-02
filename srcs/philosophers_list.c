@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "errors.h"
 #include "philosophers.h"
 
 #include <stdlib.h>
