@@ -65,27 +65,39 @@ void							option_sprite(char **av)
 	}	
 }
 
+static void						handle_option(int c)
+{
+	if (c == 'h')
+		show_help();
+	else if (c == 's')
+		option_sprite(av);
+	else if (c == 'a')
+		g_option.audio = 1;
+	else if (c == 'v')
+		g_option.no_graphic = 1;
+	else if (c == 'l')
+		g_option.show_life = 1;
+	else if (c == '?')
+		exit(1);
+}
+
 t_options						get_option(int ac, char **av)
 {
 	int					c;
 	int					option_index;
-	t_option_arguments	*option_params;
+	t_option_arguments	*opt_param;
 
 	option_index = 0;
 	ft_bzero(&g_option, sizeof(t_options));
-	option_params = get_option_params();
-	option_params->longind = &option_index;
+	opt_param = get_option_params();
+	opt_param->longind = &option_index;
 	while (1)
 	{
-		c = option_getopt_long(&(t_arguments){ac, av, 0}, option_params);
-		if (c == 0)
-			c = option_params->longopts[optind].val;
-		if (c == 'h')
-			show_help();
-		else if (c == 's')
-			option_sprite(av);
-		if (c == -1)
+		if (!(c = option_getopt_long(&(t_arguments){ac, av, 0}, opt_param)))
+			c = opt_param->longopts[opt_param].val;
+		else if (c == -1)
 			break ;
+		handle_option(c);
 	}
 	return (g_option);
 }
