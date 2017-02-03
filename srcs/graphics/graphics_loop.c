@@ -12,30 +12,7 @@
 
 #include "philosophers.h"
 #include "graphics.h"
-
-static int		graphic_put_state(t_philo *philo)
-{
-	sfSprite *sprite;
-
-	sprite = philo->sprites[philo->state];
-	sfRenderWindow_drawSprite(g_graphic.window, sprite, NULL);
-	sfRenderWindow_display(g_graphic.window);
-	return (1);
-}
-
-static void		graphic_show_philos(t_philo *philos)
-{
-	int i;
-
-	i = philos->number;
-	while (1)
-	{
-		graphic_put_state(philos);
-		philos = philos->next;
-		if (i == philos->number)
-			break ;
-	}
-}
+#include "libft.h"
 
 static int		handle_event(sfEvent event, int *exit_now)
 {
@@ -75,7 +52,10 @@ void			graphic_loop(t_philo *philo)
 	}
 	if (!exit_now)
 	{
-		graphic_show_philos(philo);
+		if (g_dead)
+			graphic_show_philos(philo);
+		else if (g_timeout)
+			time_to_dance();
 		wait_for_exit();
 	}
 }

@@ -32,4 +32,8 @@ int					graphic_init(void);
 
 void				graphic_loop(t_philo *philo);
 
+int					time_to_dance(void);
+
+void				graphic_show_philos(t_philo *philos);
+
 #endif

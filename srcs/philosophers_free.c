@@ -14,6 +14,15 @@
 
 #include <stdlib.h>
 
+static void		free_philos_rectangle(t_philo *philos)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 2)
+		sfRectangleShape_destroy(philos->graphic_life[i]);
+}
+
 static void		free_philos_sprite(t_philo *philos)
 {
 	int	i;
@@ -39,6 +48,7 @@ static void		free_philos(t_philo *philos)
 	{
 		free_philos(philos->next);
 		free_philos_sprite(philos);
+		free_philos_rectangle(philos);
 		free(philos);
 	}
 }
