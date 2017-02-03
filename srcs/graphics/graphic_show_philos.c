@@ -54,8 +54,6 @@ static int	graphic_put_state(t_philo *philo)
 
 	sprite = philo->sprites[philo->state];
 	sfRenderWindow_drawSprite(g_graphic.window, sprite, NULL);
-	graphic_put_life(philo);
-	sfRenderWindow_display(g_graphic.window);
 	return (1);
 }
 
@@ -66,8 +64,10 @@ void		graphic_show_philos(t_philo *philos)
 	i = philos->number;
 	while (1)
 	{
-		graphic_put_state(philos);
 		console_put_state(philos);
+		graphic_put_state(philos);
+		graphic_put_life(philos);
+		sfRenderWindow_display(g_graphic.window);
 		philos = philos->next;
 		if (i == philos->number)
 			break ;
