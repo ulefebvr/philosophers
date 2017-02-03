@@ -34,4 +34,6 @@ void				graphic_loop(t_philo *philo);
 
 int					time_to_dance(void);
 
+void				console_put_state(t_philo *philo);
+
 #endif

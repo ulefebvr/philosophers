@@ -12,6 +12,7 @@
 
 #include "philosophers.h"
 #include "graphics.h"
+#include "libft.h"
 
 static int		graphic_put_state(t_philo *philo)
 {
@@ -31,10 +32,12 @@ static void		graphic_show_philos(t_philo *philos)
 	while (1)
 	{
 		graphic_put_state(philos);
+		console_put_state(philos);
 		philos = philos->next;
 		if (i == philos->number)
 			break ;
 	}
+	ft_print("-------------------------\n");
 }
 
 static int		handle_event(sfEvent event, int *exit_now)

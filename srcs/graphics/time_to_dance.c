@@ -1,10 +1,12 @@
 #include "graphics.h"
+#include "libft.h"
 
 int	time_to_dance(void)
 {
 	sfText	*mytext;
 	sfFont	*myfont;
 
+	ft_print("Now, it is time... To DAAAAAAAANCE!!!\n");
 	if (!(mytext = sfText_create()))
 		return (0);
 	if (!(myfont = sfFont_createFromFile("font/alloCharlie.ttf")))
