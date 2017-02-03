@@ -92,7 +92,7 @@ int		option_advance_to_next_argv_element(
 		option_check_nonopt_values(d);
 		if (d->private_ordering == PERMUTE)
 			option_permute_prepare(argc, argv, d);
-		if (d->optind != argc && !ft_strcmp(argv[d->optind], "--"))
+		if (d->optind != argc && !option_ft_strcmp(argv[d->optind], "--"))
 			option_premature_end(argc, argv, d);
 		if (d->optind == argc)
 			return (option_handle_reach_end(d));

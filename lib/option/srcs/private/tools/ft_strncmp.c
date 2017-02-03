@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *p1, const char *p2, int size)
+#include "option_tools.h"
+
+int	option_ft_strncmp(const char *p1, const char *p2, int size)
 {
 	if (0 == p1 || 0 == p2)
 		return (-1);

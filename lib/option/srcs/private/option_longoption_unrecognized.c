@@ -27,10 +27,10 @@ int		option_treat_longoption_unrecognized(char **argv, t_option_data *d)
 	if (d->opterr)
 	{
 		if (argv[d->optind][1] == '-')
-			ft_fdprint(2, "%s: unrecognized option '--%s'\n",
+			option_ft_fdprint(2, "%s: unrecognized option '--%s'\n",
 				argv[0], d->private_nextchar);
 		else
-			ft_fdprint(2, "%s: unrecognized option '%c%s'\n",
+			option_ft_fdprint(2, "%s: unrecognized option '%c%s'\n",
 				argv[0], argv[d->optind][0], d->private_nextchar);
 	}
 	d->private_nextchar = (char *)"";

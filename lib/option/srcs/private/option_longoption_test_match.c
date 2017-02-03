@@ -85,9 +85,10 @@ void	option_treat_longoption_test_match(
 	info->option_index = 0;
 	while (info->p->name)
 	{
-		if (!ft_strncmp(info->p->name, d->private_nextchar, info->namelen))
+		if (!option_ft_strncmp(
+			info->p->name, d->private_nextchar, info->namelen))
 		{
-			if (info->namelen == ft_strlen(info->p->name))
+			if (info->namelen == option_ft_strlen(info->p->name))
 			{
 				option_treat_longoption_test_match_exact_match(info);
 				break ;

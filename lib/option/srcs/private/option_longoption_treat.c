@@ -30,7 +30,7 @@ int		option_treat_longoption(int argc, char **argv, t_option_data *d)
 			&(t_arguments){argc, argv, 0}, &info, d));
 	}
 	if (!d->long_only || argv[d->optind][1] == '-'
-		|| ft_strchr(d->optstring, *d->private_nextchar) == 0)
+		|| option_ft_strchr(d->optstring, *d->private_nextchar) == 0)
 		return (option_treat_longoption_unrecognized(argv, d));
 	return (0);
 }

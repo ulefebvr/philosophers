@@ -17,6 +17,8 @@
 
 #include <stdlib.h>
 
+#define PRINT(...) option_ft_fdprint(__VA_ARGS__)
+
 int		option_treat_longoption_ambiguous(
 			char **argv, t_treat_longoption *info, t_option_data *d)
 {
@@ -24,18 +26,18 @@ int		option_treat_longoption_ambiguous(
 
 	if (d->opterr)
 	{
-		ft_fdprint(2, "%s: option '%s' is ambiguous; possibilities: '--%s'",
+		PRINT(2, "%s: option '%s' is ambiguous; possibilities: '--%s'",
 			argv[0], argv[d->optind], info->pfound->name);
 		while (info->ambig_list != 0)
 		{
-			ft_fdprint(2, " '--%s'", info->ambig_list->p->name);
+			PRINT(2, " '--%s'", info->ambig_list->p->name);
 			tmp = info->ambig_list;
 			info->ambig_list = info->ambig_list->next;
 			free(tmp);
 		}
-		ft_fdprint(2, "\n");
+		PRINT(2, "\n");
 	}
-	d->private_nextchar += ft_strlen(d->private_nextchar);
+	d->private_nextchar += option_ft_strlen(d->private_nextchar);
 	d->optind++;
 	d->optopt = 0;
 	return ('?');

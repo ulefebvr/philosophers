@@ -28,7 +28,7 @@ int		option_r(int argc, char **argv, t_option_data *d)
 	if (d->longopts != 0
 		&& (argv[d->optind][1] == '-'
 		|| (d->long_only && (argv[d->optind][2]
-			|| !ft_strchr(d->optstring, argv[d->optind][1])))))
+			|| !option_ft_strchr(d->optstring, argv[d->optind][1])))))
 		return (option_treat_longoption(argc, argv, d));
 	return (option_treat_shortoption(argc, argv, d));
 }

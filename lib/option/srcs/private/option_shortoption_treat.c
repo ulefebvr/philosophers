@@ -49,7 +49,7 @@ int		option_treat_shortoption_arguments_required(
 	else if (d->optind == args->argc)
 	{
 		if (d->opterr)
-			ft_fdprint(2, "%s: option requires an argument -- '%c'\n",
+			option_ft_fdprint(2, "%s: option requires an argument -- '%c'\n",
 				args->argv[0], c);
 		d->optopt = c;
 		if (d->optstring[0] == ':')
@@ -77,7 +77,7 @@ int		option_treat_shortoption_invalid(char **argv, t_option_data *d, char c)
 {
 	if (d->opterr)
 	{
-		ft_fdprint(2, "%s: invalid option -- '%c'\n", argv[0], c);
+		option_ft_fdprint(2, "%s: invalid option -- '%c'\n", argv[0], c);
 	}
 	d->optopt = c;
 	return ('?');
@@ -89,7 +89,7 @@ int		option_treat_shortoption(int argc, char **argv, t_option_data *d)
 	char *temp;
 
 	c = *d->private_nextchar++;
-	temp = ft_strchr(d->optstring, c);
+	temp = option_ft_strchr(d->optstring, c);
 	if (*d->private_nextchar == '\0')
 		++d->optind;
 	if (0 == temp || ':' == c || ';' == c)

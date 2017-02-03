@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+int	option_ft_strlen(const char *str)
 {
 	char *p;
 

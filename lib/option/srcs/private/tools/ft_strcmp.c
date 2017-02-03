@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *p1, char *p2)
+int	option_ft_strcmp(char *p1, char *p2)
 {
 	if (0 == p1 || 0 == p2)
 		return (-1);

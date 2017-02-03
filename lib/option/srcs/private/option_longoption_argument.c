@@ -15,6 +15,8 @@
 #include "option_longoption.h"
 #include "option_tools.h"
 
+#define PRINT(...) option_ft_fdprint(__VA_ARGS__)
+
 int		option_treat_longoption_arguments_required(
 				t_arguments *args, t_treat_longoption *info, t_option_data *d)
 {
@@ -24,10 +26,10 @@ int		option_treat_longoption_arguments_required(
 	{
 		if (d->opterr)
 		{
-			ft_fdprint(2, "%s: option '--%s' requires an argument\n",
+			PRINT(2, "%s: option '--%s' requires an argument\n",
 				args->argv[0], info->pfound->name);
 		}
-		d->private_nextchar += ft_strlen(d->private_nextchar);
+		d->private_nextchar += option_ft_strlen(d->private_nextchar);
 		d->optopt = info->pfound->val;
 		return (d->optstring[0] == ':' ? ':' : '?');
 	}
@@ -44,14 +46,14 @@ int		option_treat_longoption_arguments_dont(
 		if (d->opterr)
 		{
 			if (args->argv[d->optind - 1][1] == '-')
-				ft_fdprint(2, "%s: option '--%s' doesn't allow an argument\n",
+				PRINT(2, "%s: option '--%s' doesn't allow an argument\n",
 					args->argv[0], info->pfound->name);
 			else
-				ft_fdprint(2, "%s: option '%c%s' doesn't allow an argument\n",
+				PRINT(2, "%s: option '%c%s' doesn't allow an argument\n",
 					args->argv[0], args->argv[d->optind - 1][0],
 					info->pfound->name);
 		}
-		d->private_nextchar += ft_strlen(d->private_nextchar);
+		d->private_nextchar += option_ft_strlen(d->private_nextchar);
 		d->optopt = info->pfound->val;
 		return ('?');
 	}
@@ -76,7 +78,7 @@ int		option_treat_longoption_arguments(
 				args, info, d)))
 			return (ret);
 	}
-	d->private_nextchar += ft_strlen(d->private_nextchar);
+	d->private_nextchar += option_ft_strlen(d->private_nextchar);
 	if (d->longind != 0)
 		*d->longind = info->option_index;
 	if (info->pfound->flag)

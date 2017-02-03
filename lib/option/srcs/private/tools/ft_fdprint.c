@@ -15,17 +15,17 @@
 
 #include "option_tools.h"
 
-int			ft_putstr_fd(char *str, int fd)
+static int		ft_putstr_fd(char *str, int fd)
 {
-	return (write(fd, str, ft_strlen(str)));
+	return (write(fd, str, option_ft_strlen(str)));
 }
 
-int			ft_putchar_fd(int c, int fd)
+static int		ft_putchar_fd(int c, int fd)
 {
 	return (write(fd, (char *)&c, 1));
 }
 
-void		run_print(int fd, const char *fmt, va_list list)
+static void		run_print(int fd, const char *fmt, va_list list)
 {
 	while (*fmt)
 	{
@@ -42,7 +42,7 @@ void		run_print(int fd, const char *fmt, va_list list)
 	}
 }
 
-int			ft_fdprint(int fd, const char *fmt, ...)
+int				option_ft_fdprint(int fd, const char *fmt, ...)
 {
 	va_list		list;
 
