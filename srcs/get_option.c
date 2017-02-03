@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "philosophers.h"
 
-t_option_arguments		*get_option_params(void)
+static t_option_arguments		*get_option_params(void)
 {
 	static t_option_info		option_info[] = {
 		{"verbose", NO_ARGUMENT, &g_option.no_graphic, 'v'},
@@ -29,7 +29,43 @@ t_option_arguments		*get_option_params(void)
 	return (&params);
 }
 
-t_options				get_option(int ac, char **av)
+static void						show_help(void)
+{
+	ft_fdprint(2, "%s\n",
+	"usage : ./philo [-valh] [-s spritename]\n\n"
+	"-v --verbose                                   "
+	"display only in verbose mode, no graphics\n"
+	"-s --sprite [philo|coco|nyangoroge|panpaka]    "
+	"change sprite. philo is the default one\n"
+	"-a --audio                                     "
+	"activate music\n"
+	"-l --life                                      "
+	"display life on the screen\n"
+	"-h --help                                      "
+	"diplay this help message\n"
+	);
+	exit(1);
+}
+
+void							option_sprite(char **av)
+{
+	if (!ft_strcmp("philo", g_option_optarg))
+		g_option.spritenbr = 0;
+	else if (!ft_strcmp("nyangoroge", g_option_optarg))
+		g_option.spritenbr = 1;		
+	else if (!ft_strcmp("panpaka", g_option_optarg))
+		g_option.spritenbr = 2;
+	else if (!ft_strcmp("coco", g_option_optarg))
+		g_option.spritenbr = 3;
+	else
+	{
+		ft_fdprint(2, "%s\n", "Invalid sprite argument :"
+		"-s --sprite [philo|coco|nyangoroge|panpaka]");
+		exit (1);
+	}	
+}
+
+t_options						get_option(int ac, char **av)
 {
 	int					c;
 	int					option_index;
@@ -42,6 +78,12 @@ t_options				get_option(int ac, char **av)
 	while (1)
 	{
 		c = option_getopt_long(&(t_arguments){ac, av, 0}, option_params);
+		if (c == 0)
+			c = option_params->longopts[optind].val;
+		if (c == 'h')
+			show_help();
+		else if (c == 's')
+			option_sprite(av);
 		if (c == -1)
 			break ;
 	}

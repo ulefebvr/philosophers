@@ -82,7 +82,7 @@ typedef struct			s_philo
 
 typedef struct			s_options
 {
-	char				*spritepath;
+	int					spritenbr;
 	int					no_graphic;
 	int					show_life;
 	int					audio;
