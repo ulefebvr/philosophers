@@ -23,7 +23,7 @@ int	time_to_dance(void)
 		return (1);
 	if (!(mytext = sfText_create()))
 		return (0);
-	if (!(myfont = sfFont_createFromFile("font/alloCharlie.ttf")))
+	if (!(myfont = sfFont_createFromFile("ressources/font/alloCharlie.ttf")))
 		return (0);
 	sfText_setString(mytext, "Now, it is time... To DAAAAAAAANCE!!!");
 	sfText_setCharacterSize(mytext, 110);

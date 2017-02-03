@@ -60,10 +60,10 @@ int			graphic_init_philo(t_philo *philo)
 int			graphic_init(void)
 {
 	char *sprite_path[4] = {
-		"img/frame_philo_plus.jpg",
-		"img/frame_nyangoroge.jpg",
-		"img/frame_panpaka.jpg",
-		"img/frame_coco.jpg",	
+		"ressources/img/frame_philo_plus.jpg",
+		"ressources/img/frame_nyangoroge.jpg",
+		"ressources/img/frame_panpaka.jpg",
+		"ressources/img/frame_coco.jpg",	
 	};
 				
 	g_graphic.window = sfRenderWindow_create(
@@ -89,7 +89,7 @@ int			graphic_init(void)
 		ft_fdprint(2, ERR_MUTEX_INIT);
 		return (0);
 	}
-	if (!(g_graphic.music = sfMusic_createFromFile("music/philo_music.ogg")))
+	if (!(g_graphic.music = sfMusic_createFromFile("ressources/music/philo_music.ogg")))
 		return (0);
 	return (1);
 }
