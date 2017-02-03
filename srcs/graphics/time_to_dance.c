@@ -19,6 +19,8 @@ int	time_to_dance(void)
 	sfFont	*myfont;
 
 	ft_print("Now, it is time... To DAAAAAAAANCE!!!\n");
+	if (g_option.no_graphic)
+		return (1);
 	if (!(mytext = sfText_create()))
 		return (0);
 	if (!(myfont = sfFont_createFromFile("font/alloCharlie.ttf")))

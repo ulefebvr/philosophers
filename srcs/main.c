@@ -25,12 +25,14 @@ int				main(int ac, char **av)
 
 	status = 0;
 	g_option = get_option(ac, av);
-	if (graphic_init() || (status = 0))
+	if (g_option.no_graphic || graphic_init() || (status = 0))
 	{
 		if ((philos = initiate_philos(NUMBER_PHILOS)) || (status = 0))
 		{
-			if (graphic_init_philo(philos) || (status = 0))
+			if (g_option.no_graphic || graphic_init_philo(philos) || (status = 0))
 			{
+				if (g_option.audio)
+					sfMusic_play(g_graphic.music);
 				launch_timer();
 				launch_threads(philos, NUMBER_PHILOS);
 				graphic_loop(philos);
@@ -38,7 +40,8 @@ int				main(int ac, char **av)
 			}
 			free_philosophers(philos);
 		}
-		graphic_destroy_windows();
+		if (!g_option.no_graphic)
+			graphic_destroy_windows();
 	}
 	return (status);
 }

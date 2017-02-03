@@ -49,6 +49,7 @@ static void						show_help(void)
 
 void							option_sprite(char **av)
 {
+	(void)av;
 	if (!ft_strcmp("philo", g_option_optarg))
 		g_option.spritenbr = 0;
 	else if (!ft_strcmp("nyangoroge", g_option_optarg))
@@ -65,7 +66,7 @@ void							option_sprite(char **av)
 	}	
 }
 
-static void						handle_option(int c)
+static void						handle_option(int c, char **av)
 {
 	if (c == 'h')
 		show_help();
@@ -94,10 +95,10 @@ t_options						get_option(int ac, char **av)
 	while (1)
 	{
 		if (!(c = option_getopt_long(&(t_arguments){ac, av, 0}, opt_param)))
-			c = opt_param->longopts[opt_param].val;
+			c = opt_param->longopts[option_index].val;
 		else if (c == -1)
 			break ;
-		handle_option(c);
+		handle_option(c, av);
 	}
 	return (g_option);
 }

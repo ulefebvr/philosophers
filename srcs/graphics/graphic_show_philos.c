@@ -18,13 +18,13 @@ static void	console_put_state(t_philo *philo)
 {
 	ft_print("Philo number: %d", philo->number);
 	if (philo->state == REST)
-		ft_print(", state: REST, life: %d\n", philo->life);
+		ft_print(", state: REST,  life: %d\n", philo->life);
 	else if (philo->state == THINK)
 		ft_print(", state: THINK, life: %d\n", philo->life);
 	else if (philo->state == EAT)
-		ft_print(", state: EAT, life: %d\n", philo->life);
+		ft_print(", state: EAT,   life: %d\n", philo->life);
 	else if (philo->state == DEAD)
-		ft_print(", state: DEAD, life: %d\n", philo->life);
+		ft_print(", state: DEAD,  life: %d\n", philo->life);
 }
 
 static int	graphic_put_life(t_philo *philo)
@@ -65,12 +65,16 @@ void		graphic_show_philos(t_philo *philos)
 	while (1)
 	{
 		console_put_state(philos);
-		graphic_put_state(philos);
-		graphic_put_life(philos);
-		sfRenderWindow_display(g_graphic.window);
+		if (!g_option.no_graphic)
+		{
+			graphic_put_state(philos);
+			graphic_put_life(philos);
+			sfRenderWindow_display(g_graphic.window);
+		}
 		philos = philos->next;
 		if (i == philos->number)
 			break ;
 	}
+	usleep(500000);
 	ft_print("-------------------------\n");
 }

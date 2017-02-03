@@ -45,7 +45,7 @@ void			graphic_loop(t_philo *philo)
 	exit_now = 0;
 	while (!g_dead && !g_timeout)
 	{
-		if (sfRenderWindow_pollEvent(g_graphic.window, &event)
+		if (!g_option.no_graphic && sfRenderWindow_pollEvent(g_graphic.window, &event)
 			&& handle_event(event, &exit_now))
 			break ;
 		graphic_show_philos(philo);
@@ -56,6 +56,7 @@ void			graphic_loop(t_philo *philo)
 			graphic_show_philos(philo);
 		else if (g_timeout)
 			time_to_dance();
-		wait_for_exit();
+		if (!g_option.no_graphic)
+			wait_for_exit();
 	}
 }

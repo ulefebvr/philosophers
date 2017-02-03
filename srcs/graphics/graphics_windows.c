@@ -14,6 +14,7 @@
 
 void				graphic_destroy_windows(void)
 {
+	sfMusic_destroy(g_graphic.music);
 	pthread_mutex_destroy(&g_graphic.mutex);
 	sfTexture_destroy(g_graphic.texture);
 	sfRenderWindow_destroy(g_graphic.window);

@@ -14,6 +14,7 @@
 # define GRAPHICS_H
 
 # include "SFML/Graphics.h"
+# include "SFML/Audio.h"
 # include "philosophers.h"
 
 typedef struct		s_graphic
@@ -21,6 +22,7 @@ typedef struct		s_graphic
 	pthread_mutex_t	mutex;
 	sfTexture		*texture;
 	sfRenderWindow	*window;
+	sfMusic			*music;
 }					t_graphic;
 
 extern t_graphic	g_graphic;
