@@ -16,13 +16,15 @@
 char			g_dead = 0;
 char			g_timeout = 0;
 t_graphic		g_graphic;
+t_options		g_option;
 
-int				main(void)
+int				main(int ac, char **av)
 {
 	t_philo		*philos;
 	int			status;
 
 	status = 0;
+	g_option = get_option(ac, av);
 	if (graphic_init() || (status = 0))
 	{
 		if ((philos = initiate_philos(NUMBER_PHILOS)) || (status = 0))

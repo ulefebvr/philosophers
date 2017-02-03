@@ -14,20 +14,25 @@ TARGET_EXEC ?= philo
 
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./srcs
-INC_DIR ?= ./includes ./lib/libft/includes $(HOME)/.brew/include
+INC_DIR ?= ./includes ./lib/libft/includes
 
 SRCS := $(shell find $(SRC_DIRS) -name '*.cpp' -or -name '*.c' -or -name '*.s')
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:.o=.d)
 
 INC_DIRS := $(shell find $(INC_DIR) -type d)
-INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+INC_FLAGS := $(addprefix -I,$(INC_DIRS) ./lib/option/includes/ $(HOME)/.brew/include)
 
 CPPFLAGS ?= $(INC_FLAGS) -MMD -MP -Wall -Werror -Wextra
 
 # Extra flags to give to compilers when they are supposed to invoke the linker, ‘ld’, such as -L.
 # Libraries (-lfoo) should be added to the LDLIBS variable instead.
-LDFLAGS ?= -L ./lib/libft -lft -lpthread -L $(HOME)/.brew/lib -lcsfml-audio -lcsfml-graphics -lcsfml-network -lcsfml-window -lcsfml-system -Wl,-rpath,$(HOME)/.brew/lib/
+LDFLAGS ?= -L ./lib/libft -lft \
+			-lpthread \
+			-L $(HOME)/.brew/lib -lcsfml-audio -lcsfml-graphics -lcsfml-network \
+				-lcsfml-window -lcsfml-system -Wl,-rpath,$(HOME)/.brew/lib/\
+			-L ./lib/option -loption
+
 all: $(TARGET_EXEC) $(OBJS)
 
 # $(TARGET_EXEC): $(OBJS)
@@ -36,6 +41,7 @@ all: $(TARGET_EXEC) $(OBJS)
 
 $(TARGET_EXEC): $(OBJS)
 	make -C lib/libft
+	make -C lib/option
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
 # assembly
@@ -57,10 +63,12 @@ $(BUILD_DIR)/%.cpp.o: %.cpp
 
 clean:
 	make clean -C lib/libft
+	make clean -C lib/option
 	$(RM) -r $(BUILD_DIR)
 
 fclean: clean
 	make fclean -C lib/libft
+	make fclean -C lib/option
 	$(RM) $(TARGET_EXEC)
 
 re: fclean

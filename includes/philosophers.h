@@ -80,8 +80,19 @@ typedef struct			s_philo
 	struct s_philo		*prev;
 }						t_philo;
 
+typedef struct			s_options
+{
+	char				*spritepath;
+	int					no_graphic;
+	int					show_life;
+	int					audio;
+}						t_options;
+
 extern char				g_dead;
 extern char				g_timeout;
+extern t_options		g_option;
+
+t_options				get_option(int ac, char **av);
 
 t_philo					*initiate_philos(int number);
 void					free_philosophers(t_philo *philos);
