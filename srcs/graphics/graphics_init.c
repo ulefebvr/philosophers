@@ -60,15 +60,15 @@ int			graphic_init_philo(t_philo *philo)
 int			graphic_init(void)
 {
 	g_graphic.window = sfRenderWindow_create(
-		(sfVideoMode){1296, 277, 32}, "Philosophers",
-		sfResize | sfClose, NULL);
+		(sfVideoMode){1295, 276, 32}, "Philosophers",
+		sfClose, NULL);
 	if (!g_graphic.window)
 	{
 		ft_fdprint(2, ERR_WINDOW_INIT);
 		return (0);
 	}
 	g_graphic.texture = sfTexture_createFromFile(
-		"img/frame_philo_plus.jpg", &(sfIntRect){0, 0, 0, 650});
+		"img/frame_nyangoroge.jpg", &(sfIntRect){0, 0, 0, 650});
 	if (!g_graphic.texture)
 	{
 		sfRenderWindow_destroy(g_graphic.window);
