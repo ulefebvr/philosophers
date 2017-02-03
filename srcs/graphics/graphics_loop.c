@@ -14,32 +14,6 @@
 #include "graphics.h"
 #include "libft.h"
 
-static int		graphic_put_state(t_philo *philo)
-{
-	sfSprite *sprite;
-
-	sprite = philo->sprites[philo->state];
-	sfRenderWindow_drawSprite(g_graphic.window, sprite, NULL);
-	sfRenderWindow_display(g_graphic.window);
-	return (1);
-}
-
-static void		graphic_show_philos(t_philo *philos)
-{
-	int i;
-
-	i = philos->number;
-	while (1)
-	{
-		graphic_put_state(philos);
-		console_put_state(philos);
-		philos = philos->next;
-		if (i == philos->number)
-			break ;
-	}
-	ft_print("-------------------------\n");
-}
-
 static int		handle_event(sfEvent event, int *exit_now)
 {
 	if ((event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)

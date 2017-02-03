@@ -14,6 +14,22 @@
 #include "errors.h"
 #include "graphics.h"
 
+static int	graphic_init_philo_life(t_philo *philo)
+{
+	if (!(philo->graphic_life[0] = sfRectangleShape_create())
+		|| !(philo->graphic_life[1] = sfRectangleShape_create()))
+		return (0);
+	sfRectangleShape_setSize(philo->graphic_life[0], (sfVector2f){145, 20});
+	sfRectangleShape_setPosition(
+		philo->graphic_life[0], (sfVector2f){20 + (185 * philo->number), 247});
+	sfRectangleShape_setFillColor(philo->graphic_life[0], sfWhite);
+	sfRectangleShape_setOutlineThickness(philo->graphic_life[0], 2);
+	sfRectangleShape_setOutlineColor(philo->graphic_life[0], sfWhite);
+	sfRectangleShape_setPosition(
+		philo->graphic_life[1], (sfVector2f){20 + (185 * philo->number), 247});
+	return (1);
+}
+
 int			graphic_init_philo(t_philo *philo)
 {
 	int			i;
@@ -27,23 +43,21 @@ int			graphic_init_philo(t_philo *philo)
 		while (++i < 4)
 		{
 			philo->sprites[i] = sfSprite_create();
-			tmp = philo->sprites[i];
-			if (tmp == 0)
-			{
-				ft_fdprint(2, ERR_SPRITES_INIT);
-				return (0);
-			}
+			if (!(tmp = philo->sprites[i]))
+				return (!ft_fdprint(2, ERR_SPRITES_INIT));
 			sfSprite_setTexture(tmp, g_graphic.texture, sfTrue);
 			sfSprite_setScale(tmp, (sfVector2f){0.42758, 0.4255});
 			sfSprite_setPosition(tmp, (sfVector2f){185 * philo->number, 0});
 			sfSprite_setTextureRect(tmp, (sfIntRect){433 * i, 0, 433, 650});
 		}
+		if (!graphic_init_philo_life(philo))
+			return (0);
 		philo = philo->next;
 	}
 	return (1);
 }
 
-int				graphic_init(void)
+int			graphic_init(void)
 {
 	g_graphic.window = sfRenderWindow_create(
 		(sfVideoMode){1296, 277, 32}, "Philosophers",

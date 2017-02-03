@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time_to_dance.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rclanget <rclanget@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/03 12:53:23 by rclanget          #+#    #+#             */
+/*   Updated: 2017/02/03 12:53:24 by rclanget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "graphics.h"
 #include "libft.h"
 
@@ -18,7 +30,7 @@ int	time_to_dance(void)
 	sfRenderWindow_clear(g_graphic.window, sfRed);
 	sfRenderWindow_drawText(g_graphic.window, mytext, NULL);
 	sfRenderWindow_display(g_graphic.window);
-	sfFont_destroy(myfont);	
+	sfFont_destroy(myfont);
 	sfText_destroy(mytext);
 	return (1);
 }

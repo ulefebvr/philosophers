@@ -30,7 +30,7 @@
 /*
 ** Le nombre de SECONDES que met un philosophe à manger.
 */
-# define EAT_T					2
+# define EAT_T					4
 
 /*
 ** Le nombre de SECONDES pendant lesquels un philosophe se repose.
@@ -75,6 +75,7 @@ typedef struct			s_philo
 	t_state				state;
 	pthread_t			thread;
 	sfSprite			*sprites[4];
+	sfRectangleShape	*graphic_life[2];
 	struct s_philo		*next;
 	struct s_philo		*prev;
 }						t_philo;
