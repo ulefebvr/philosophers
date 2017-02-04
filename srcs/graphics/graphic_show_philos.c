@@ -75,7 +75,8 @@ void		graphic_show_philos(t_philo *philos)
 		if (i == philos->number)
 			break ;
 	}
-	sfRenderWindow_display(g_graphic.window);
+	if (!g_option.no_graphic)
+		sfRenderWindow_display(g_graphic.window);
 	usleep(500000);
 	ft_print("-------------------------\n");
 }

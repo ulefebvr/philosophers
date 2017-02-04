@@ -74,6 +74,7 @@ int			graphic_init(void)
 		ft_fdprint(2, ERR_WINDOW_INIT);
 		return (0);
 	}
+	sfRenderWindow_clear(g_graphic.window, sfBlack);
 	g_graphic.texture = sfTexture_createFromFile(
 		sprite_path[g_option.spritenbr], &(sfIntRect){0, 0, 0, 650});
 	if (!g_graphic.texture)
