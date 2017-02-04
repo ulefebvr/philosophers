@@ -60,3 +60,12 @@ Examples
 ./philo --lifebar --sprite=panpaka --timeout 100
 ```
 ![png](ressources/readme_images/panpaka.png)
+
+
+----------
+
+Contributors
+-------
+
+[rclanget](https://github.com/rclanget)
+[ulefebvr](https://github.com/ulefebvr)
