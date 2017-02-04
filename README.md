@@ -67,5 +67,5 @@ Examples
 Contributors
 -------
 
-[rclanget](https://github.com/rclanget)
-[ulefebvr](https://github.com/ulefebvr)
+- [rclanget](https://github.com/rclanget)
+- [ulefebvr](https://github.com/ulefebvr)
