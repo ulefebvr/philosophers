@@ -36,7 +36,7 @@ int			graphic_init_philo(t_philo *philo)
 	int			count;
 	sfSprite	*tmp;
 
-	count = NUMBER_PHILOS;
+	count = 7;
 	while (count-- > 0)
 	{
 		i = -1;

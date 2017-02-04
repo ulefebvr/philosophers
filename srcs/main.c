@@ -27,16 +27,16 @@ int				main(int ac, char **av)
 	g_option = get_option(ac, av);
 	if (g_option.no_graphic || graphic_init() || (status = 0))
 	{
-		if ((philos = initiate_philos(NUMBER_PHILOS)) || (status = 0))
+		if ((philos = initiate_philos(7)) || (status = 0))
 		{
 			if (g_option.no_graphic || graphic_init_philo(philos) || (status = 0))
 			{
 				if (g_option.audio)
 					sfMusic_play(g_graphic.music);
 				launch_timer();
-				launch_threads(philos, NUMBER_PHILOS);
+				launch_threads(philos, 7);
 				graphic_loop(philos);
-				wait_threads(philos, NUMBER_PHILOS);
+				wait_threads(philos, 7);
 			}
 			free_philosophers(philos);
 		}
