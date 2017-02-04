@@ -33,7 +33,7 @@ int				main(int ac, char **av)
 			if (g_option.no_graphic
 				|| graphic_init_philo(philos) || (status = 0))
 			{
-				if (g_option.audio)
+				if (!g_option.no_graphic && g_option.audio)
 					sfMusic_play(g_graphic.music);
 				launch_timer();
 				launch_threads(philos, 7);
