@@ -104,5 +104,6 @@ int			graphic_init(void)
 	if (!(g_graphic.music = sfMusic_createFromFile(
 		"ressources/music/philo_music.ogg")))
 		return (0);
+	sfMusic_setLoop(g_graphic.music, sfTrue);
 	return (1);
 }
