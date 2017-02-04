@@ -32,7 +32,8 @@ static int	graphic_put_life(t_philo *philo)
 	sfColor	color;
 	int		life;
 
-	life = (philo->life * 145) / MAX_LIFE;
+
+	life = MAX_LIFE ? (philo->life * 145) / MAX_LIFE : 0;
 	if (life <= 50)
 		color = sfRed;
 	else if (life < 100)
@@ -69,12 +70,12 @@ void		graphic_show_philos(t_philo *philos)
 		{
 			graphic_put_state(philos);
 			graphic_put_life(philos);
-			sfRenderWindow_display(g_graphic.window);
 		}
 		philos = philos->next;
 		if (i == philos->number)
 			break ;
 	}
+	sfRenderWindow_display(g_graphic.window);
 	usleep(500000);
 	ft_print("-------------------------\n");
 }
