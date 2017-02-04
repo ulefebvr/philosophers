@@ -18,7 +18,7 @@ static t_stick	*get_stick(t_philo *philo, int side)
 	t_stick		*stick;
 
 	stick = (side == LEFT ? philo->lstick : philo->rstick);
-	stick->stick = 1;
+	stick->stick = philo->number + 1;
 	pthread_mutex_unlock(&stick->lock);
 	return (stick);
 }
@@ -31,7 +31,7 @@ void			philo_think(t_philo *philo, int side)
 	time = 0;
 	philo->state = THINK;
 	stick = get_stick(philo, side);
-	while (stick->stick && everything_safe(philo))
+	while (stick->stick == philo->number + 1 && everything_safe(philo))
 	{
 		usleep(SECONDS(1));
 		philo->life--;
