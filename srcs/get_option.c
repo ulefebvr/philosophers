@@ -20,7 +20,7 @@ static t_option_arguments		*get_option_params(void)
 		{"verbose", NO_ARGUMENT, &g_option.no_graphic, 'v'},
 		{"sprite", REQUIRED_ARGUMENT, 0, 's'},
 		{"audio", NO_ARGUMENT, &g_option.audio, 'a'},
-		{"life", NO_ARGUMENT, &g_option.show_life, 'l'},
+		{"lifebar", NO_ARGUMENT, &g_option.show_life, 'l'},
 		{"maxlife", REQUIRED_ARGUMENT, 0, 'm'},
 		{"eat", REQUIRED_ARGUMENT, 0, 'e'},
 		{"rest", REQUIRED_ARGUMENT, 0, 'r'},
@@ -29,7 +29,7 @@ static t_option_arguments		*get_option_params(void)
 		{"help", NO_ARGUMENT, 0, 'h'},
 		{0, 0, 0, 0}
 	};
-	static t_option_arguments	params = {"vs:alh", option_info, 0};
+	static t_option_arguments	params = {"vs:h", option_info, 0};
 
 	return (&params);
 }
@@ -37,15 +37,25 @@ static t_option_arguments		*get_option_params(void)
 static void						show_help(void)
 {
 	ft_fdprint(2, "%s\n",
-	"usage : ./philo [-valh] [-s spritename]\n\n"
+	"usage : ./philo [-vh] [-s spritename]\n\n"
 	"-v --verbose                                   "
 	"display only in verbose mode, no graphics\n"
 	"-s --sprite [philo|coco|nyangoroge|panpaka]    "
 	"change sprite. philo is the default one\n"
-	"-a --audio                                     "
+	"--audio                                        "
 	"activate music\n"
-	"-l --life                                      "
+	"--lifebar                                      "
 	"display life on the screen\n"
+	"--maxlife=n                                    "
+	"modify maxlife value set to 10 by default\n"
+	"--eat=n                                        "
+	"modify eat time value set to 4 by default\n"
+	"--rest=n                                       "
+	"modify rest time value set to 3 by default\n"
+	"--think=n                                      "
+	"modify think time value set to 3 by default\n"
+	"--timeout=n                                    "
+	"modify timeout value set to 60 by default\n"
 	"-h --help                                      "
 	"diplay this help message\n");
 	exit(1);
