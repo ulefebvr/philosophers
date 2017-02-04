@@ -69,7 +69,8 @@ void		graphic_show_philos(t_philo *philos)
 		if (!g_option.no_graphic)
 		{
 			graphic_put_state(philos);
-			graphic_put_life(philos);
+			if (g_option.show_life)
+				graphic_put_life(philos);
 		}
 		philos = philos->next;
 		if (i == philos->number)
