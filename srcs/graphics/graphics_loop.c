@@ -45,7 +45,8 @@ void			graphic_loop(t_philo *philo)
 	exit_now = 0;
 	while (!g_dead && !g_timeout)
 	{
-		if (!g_option.no_graphic && sfRenderWindow_pollEvent(g_graphic.window, &event)
+		if (!g_option.no_graphic
+			&& sfRenderWindow_pollEvent(g_graphic.window, &event)
 			&& handle_event(event, &exit_now))
 			break ;
 		graphic_show_philos(philo);

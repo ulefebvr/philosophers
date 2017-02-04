@@ -57,15 +57,29 @@ int			graphic_init_philo(t_philo *philo)
 	return (1);
 }
 
+int			graphic_init_texture(void)
+{
+	if (g_option.spritenbr == 0)
+		g_graphic.texture = sfTexture_createFromFile(
+			"ressources/img/frame_philo_plus.jpg",
+			&(sfIntRect){0, 0, 0, 650});
+	if (g_option.spritenbr == 1)
+		g_graphic.texture = sfTexture_createFromFile(
+			"ressources/img/frame_nyangoroge.jpg",
+			&(sfIntRect){0, 0, 0, 650});
+	if (g_option.spritenbr == 2)
+		g_graphic.texture = sfTexture_createFromFile(
+			"ressources/img/frame_panpaka.jpg",
+			&(sfIntRect){0, 0, 0, 650});
+	if (g_option.spritenbr == 3)
+		g_graphic.texture = sfTexture_createFromFile(
+			"ressources/img/frame_coco.jpg",
+			&(sfIntRect){0, 0, 0, 650});
+	return (g_graphic.texture ? 1 : 0);
+}
+
 int			graphic_init(void)
 {
-	char *sprite_path[4] = {
-		"ressources/img/frame_philo_plus.jpg",
-		"ressources/img/frame_nyangoroge.jpg",
-		"ressources/img/frame_panpaka.jpg",
-		"ressources/img/frame_coco.jpg",	
-	};
-				
 	g_graphic.window = sfRenderWindow_create(
 		(sfVideoMode){1295, 276, 32}, "Philosophers",
 		sfClose, NULL);
@@ -74,10 +88,7 @@ int			graphic_init(void)
 		ft_fdprint(2, ERR_WINDOW_INIT);
 		return (0);
 	}
-	sfRenderWindow_clear(g_graphic.window, sfBlack);
-	g_graphic.texture = sfTexture_createFromFile(
-		sprite_path[g_option.spritenbr], &(sfIntRect){0, 0, 0, 650});
-	if (!g_graphic.texture)
+	if (!graphic_init_texture())
 	{
 		sfRenderWindow_destroy(g_graphic.window);
 		ft_fdprint(2, ERR_TEXTURE_INIT);
@@ -90,7 +101,8 @@ int			graphic_init(void)
 		ft_fdprint(2, ERR_MUTEX_INIT);
 		return (0);
 	}
-	if (!(g_graphic.music = sfMusic_createFromFile("ressources/music/philo_music.ogg")))
+	if (!(g_graphic.music = sfMusic_createFromFile(
+		"ressources/music/philo_music.ogg")))
 		return (0);
 	return (1);
 }

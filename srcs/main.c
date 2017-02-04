@@ -27,9 +27,11 @@ int				main(int ac, char **av)
 	g_option = get_option(ac, av);
 	if (g_option.no_graphic || graphic_init() || (status = 0))
 	{
-		if ((philos = initiate_philos(7)) || (status = 0))
+		philos = initiate_philos(7);
+		if (philos || (status = 0))
 		{
-			if (g_option.no_graphic || graphic_init_philo(philos) || (status = 0))
+			if (g_option.no_graphic
+				|| graphic_init_philo(philos) || (status = 0))
 			{
 				if (g_option.audio)
 					sfMusic_play(g_graphic.music);
@@ -37,11 +39,10 @@ int				main(int ac, char **av)
 				launch_threads(philos, 7);
 				graphic_loop(philos);
 				wait_threads(philos, 7);
+				graphic_destroy_windows();
 			}
 			free_philosophers(philos);
 		}
-		if (!g_option.no_graphic)
-			graphic_destroy_windows();
 	}
 	return (status);
 }
