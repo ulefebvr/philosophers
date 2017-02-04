@@ -47,8 +47,7 @@ static void						show_help(void)
 	"-l --life                                      "
 	"display life on the screen\n"
 	"-h --help                                      "
-	"diplay this help message\n"
-	);
+	"diplay this help message\n");
 	exit(1);
 }
 
@@ -58,7 +57,7 @@ void							option_sprite(char **av)
 	if (!ft_strcmp("philo", g_option_optarg))
 		g_option.spritenbr = 0;
 	else if (!ft_strcmp("nyangoroge", g_option_optarg))
-		g_option.spritenbr = 1;		
+		g_option.spritenbr = 1;
 	else if (!ft_strcmp("panpaka", g_option_optarg))
 		g_option.spritenbr = 2;
 	else if (!ft_strcmp("coco", g_option_optarg))
@@ -67,8 +66,8 @@ void							option_sprite(char **av)
 	{
 		ft_fdprint(2, "%s\n", "Invalid sprite argument :"
 		"-s --sprite [philo|coco|nyangoroge|panpaka]");
-		exit (1);
-	}	
+		exit(1);
+	}
 }
 
 static void						handle_option(int c, char **av)
