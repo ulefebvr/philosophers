@@ -81,6 +81,11 @@ typedef struct			s_options
 	int					no_graphic;
 	int					show_life;
 	int					audio;
+	int					max_life;
+	int					eat;
+	int					rest;
+	int					think;
+	int					timeout;
 }						t_options;
 
 extern char				g_dead;

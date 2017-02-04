@@ -30,9 +30,9 @@ void		philo_eat(t_philo *philo)
 	while (everything_safe(philo))
 	{
 		usleep(SECONDS(1));
-		if (++time == EAT_T)
+		if (++time == g_option.eat)
 		{
-			philo->life = MAX_LIFE;
+			philo->life = g_option.max_life;
 			break ;
 		}
 	}

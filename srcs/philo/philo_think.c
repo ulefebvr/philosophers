@@ -35,7 +35,7 @@ void			philo_think(t_philo *philo, int side)
 	{
 		usleep(SECONDS(1));
 		philo->life--;
-		if (++time == THINK_T)
+		if (++time == g_option.think)
 			break ;
 	}
 }

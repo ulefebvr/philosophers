@@ -32,7 +32,7 @@ static int	graphic_put_life(t_philo *philo)
 	sfColor	color;
 	int		life;
 
-	life = MAX_LIFE ? (philo->life * 145) / MAX_LIFE : 0;
+	life = g_option.max_life ? (philo->life * 145) / g_option.max_life : 0;
 	if (life <= 50)
 		color = sfRed;
 	else if (life < 100)

@@ -21,6 +21,11 @@ static t_option_arguments		*get_option_params(void)
 		{"sprite", REQUIRED_ARGUMENT, 0, 's'},
 		{"audio", NO_ARGUMENT, &g_option.audio, 'a'},
 		{"life", NO_ARGUMENT, &g_option.show_life, 'l'},
+		{"maxlife", REQUIRED_ARGUMENT, 0, 'm'},
+		{"eat", REQUIRED_ARGUMENT, 0, 'e'},
+		{"rest", REQUIRED_ARGUMENT, 0, 'r'},
+		{"think", REQUIRED_ARGUMENT, 0, 't'},
+		{"timeout", REQUIRED_ARGUMENT, 0, 'o'},
 		{"help", NO_ARGUMENT, 0, 'h'},
 		{0, 0, 0, 0}
 	};
@@ -78,6 +83,16 @@ static void						handle_option(int c, char **av)
 		g_option.no_graphic = 1;
 	else if (c == 'l')
 		g_option.show_life = 1;
+	else if (c == 'm')
+		g_option.max_life = ft_atoi(g_option_optarg);
+	else if (c == 'e')
+		g_option.eat = ft_atoi(g_option_optarg);
+	else if (c == 'r')
+		g_option.rest = ft_atoi(g_option_optarg);
+	else if (c == 't')
+		g_option.think = ft_atoi(g_option_optarg);
+	else if (c == 'o')
+		g_option.timeout = ft_atoi(g_option_optarg);
 	else if (c == '?')
 		exit(1);
 }
@@ -90,6 +105,11 @@ t_options						get_option(int ac, char **av)
 
 	option_index = 0;
 	ft_bzero(&g_option, sizeof(t_options));
+	g_option.max_life = MAX_LIFE;
+	g_option.eat = EAT_T;
+	g_option.rest = REST_T;
+	g_option.think = THINK_T;
+	g_option.timeout = TIMEOUT;
 	opt_param = get_option_params();
 	opt_param->longind = &option_index;
 	while (1)

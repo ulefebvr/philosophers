@@ -17,7 +17,7 @@
 void			*start_timer(void *null)
 {
 	(void)null;
-	usleep(SECONDS(TIMEOUT));
+	usleep(SECONDS(g_option.timeout));
 	g_timeout = 1;
 	return (0);
 }

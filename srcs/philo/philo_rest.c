@@ -31,7 +31,7 @@ void		philo_rest(t_philo *philo)
 	{
 		usleep(SECONDS(1));
 		philo->life--;
-		if (++time == REST_T)
+		if (++time == g_option.rest)
 			break ;
 	}
 }
