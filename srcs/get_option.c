@@ -82,27 +82,26 @@ void							option_sprite(char **av)
 
 static void						handle_option(int c, char **av)
 {
+	static int	*time[5] = {&g_option.max_life, &g_option.eat, &g_option.think,
+		&g_option.rest, &g_option.timeout};
+	static char	*time_str = "metro";
+	static int	*opt[3] = {
+		&g_option.audio, &g_option.no_graphic, &g_option.show_life};
+	static char	*opt_str = "avl";
+
 	if (c == 'h')
 		show_help();
 	else if (c == 's')
 		option_sprite(av);
-	else if (c == 'a')
-		g_option.audio = 1;
-	else if (c == 'v')
-		g_option.no_graphic = 1;
-	else if (c == 'l')
-		g_option.show_life = 1;
-	else if (c == 'm')
-		g_option.max_life = ft_atoi(g_option_optarg);
-	else if (c == 'e')
-		g_option.eat = ft_atoi(g_option_optarg);
-	else if (c == 'r')
-		g_option.rest = ft_atoi(g_option_optarg);
-	else if (c == 't')
-		g_option.think = ft_atoi(g_option_optarg);
-	else if (c == 'o')
-		g_option.timeout = ft_atoi(g_option_optarg);
+	else if (ft_strchr(opt_str, c))
+		*(opt[ft_strchr(opt_str, c) - opt_str]) = 1;
+	else if (ft_strchr(time_str, c))
+		*(time[ft_strchr(time_str, c) - time_str]) = ft_atoi(g_option_optarg);
 	else if (c == '?')
+		exit(1);
+	if (((g_option.max_life <= 0) || (g_option.eat <= 0) || (g_option.rest <= 0)
+		|| (g_option.think <= 0) || (g_option.timeout <= 0))
+		&& ft_fdprint(2, "%s\n", "Time value cannot be set to negative value"))
 		exit(1);
 }
 

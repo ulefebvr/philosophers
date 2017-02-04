@@ -81,8 +81,7 @@ int			graphic_init_texture(void)
 int			graphic_init(void)
 {
 	g_graphic.window = sfRenderWindow_create(
-		(sfVideoMode){1295, 276, 32}, "Philosophers",
-		sfClose, NULL);
+		(sfVideoMode){1295, 276, 32}, "Philosophers", sfClose, NULL);
 	if (!g_graphic.window)
 	{
 		ft_fdprint(2, ERR_WINDOW_INIT);
