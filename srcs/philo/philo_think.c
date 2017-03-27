@@ -31,7 +31,7 @@ void			philo_think(t_philo *philo, int side)
 	time = 0;
 	philo->state = THINK;
 	stick = get_stick(philo, side);
-	while (stick->stick == philo->number + 1 && everything_safe(philo))
+	while (everything_safe(philo))
 	{
 		usleep(SECONDS(1));
 		philo->life--;

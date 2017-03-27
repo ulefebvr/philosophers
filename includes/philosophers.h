@@ -20,12 +20,12 @@
 /*
 ** Le nombre de points de vie maximum des philosophes.
 */
-# define MAX_LIFE				10
+# define MAX_LIFE				30
 
 /*
 ** Le nombre de SECONDES que met un philosophe à manger.
 */
-# define EAT_T					4
+# define EAT_T					3
 
 /*
 ** Le nombre de SECONDES pendant lesquels un philosophe se repose.
