@@ -20,22 +20,22 @@
 /*
 ** Le nombre de points de vie maximum des philosophes.
 */
-# define MAX_LIFE				30
+# define MAX_LIFE				10
 
 /*
 ** Le nombre de SECONDES que met un philosophe à manger.
 */
-# define EAT_T					3
+# define EAT_T					1
 
 /*
 ** Le nombre de SECONDES pendant lesquels un philosophe se repose.
 */
-# define REST_T					3
+# define REST_T					1
 
 /*
 ** Le nombre de SECONDES pendant lesquels un philosophe réfléchit.
 */
-# define THINK_T				3
+# define THINK_T				1
 
 /*
 ** Le temps en SECONDES après lesquels la simulation s’interrompt

@@ -18,12 +18,14 @@ int		check_stick(t_philo *philo)
 	int	stick;
 
 	stick = 0;
-	if (philo->lstick->stick && !pthread_mutex_trylock(&philo->lstick->lock))
+	if (philo->life <= philo->prev->life &&
+		philo->lstick->stick && !pthread_mutex_trylock(&philo->lstick->lock))
 	{
 		philo->lstick->stick = 0;
 		stick = LEFT;
 	}
-	if (philo->rstick->stick && !pthread_mutex_trylock(&philo->rstick->lock))
+	if (philo->life <= philo->next->life &&
+		philo->rstick->stick && !pthread_mutex_trylock(&philo->rstick->lock))
 	{
 		philo->rstick->stick = 0;
 		stick += RIGHT;
